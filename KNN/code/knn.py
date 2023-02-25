@@ -54,11 +54,12 @@ class KNNClassifier:
         distances, np array (num_test_samples, num_train_samples) - array
            with distances between each test and each train sample
         """
-        
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+      
+        distances_array = np.empty((len(X),len(self.train_X)))
+        for i in range(len(X)):
+            for j in range(len(self.train_X)):
+                distances_array[i,j] = np.linalg.norm(X[i]-self.train_X[j], ord=1)
+        return distances_array
 
 
     def compute_distances_one_loop(self, X):
@@ -73,11 +74,11 @@ class KNNClassifier:
         distances, np array (num_test_samples, num_train_samples) - array
            with distances between each test and each train sample
         """
-
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+        distances_array = np.empty((len(X),len(self.train_X)))
+        for i in range(len(X)):
+            distances_array[i] = np.linalg.norm(self.train_X - X[i], ord=1, axis=1)
+        return distances_array
+        
 
 
     def compute_distances_no_loops(self, X):
